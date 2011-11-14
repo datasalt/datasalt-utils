@@ -413,7 +413,7 @@
             <configuration>
               <sources>
                 <source>src/contrib/java</source>
-                <source>src/test/generated-thrift/java</source>
+                <source>target/test/generated-thrift/java/gen-javabean</source>
               </sources>
             </configuration>
           </execution>
@@ -441,13 +441,13 @@
                 <phase>generate-sources</phase>
                 <configuration>
                   <tasks>
-                    <mkdir dir="src/test/generated-thrift/java/" />
+                    <mkdir dir="target/test/generated-thrift/java/" />
                     <exec executable="/usr/local/bin/thrift">
                       <arg value="--gen" />
                       <arg value="java:beans"/>
                       <arg value="-o"/>
-                      <arg value="src/test/generated-thrift/java/"/>
-                      <arg value="src/test/resources/pangolin-test.thrift"/>
+                      <arg value="target/test/generated-thrift/java/"/>
+                      <arg value="src/test/resources/datasalt-test.thrift"/>
                     </exec>
                     <!--  
                     <delete>

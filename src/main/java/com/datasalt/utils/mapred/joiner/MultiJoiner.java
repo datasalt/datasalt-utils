@@ -1,9 +1,24 @@
+/**
+ * Copyright [2011] [Datasalt Systems S.L.]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.datasalt.utils.mapred.joiner;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
@@ -18,17 +33,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.datasalt.utils.commons.HadoopUtils;
-import com.datasalt.utils.mapred.joiner.TestMultiJoiner;
-import com.datasalt.utils.mapred.joiner.TestMultiJoinerSecondarySort;
 
 /**
  * The MultiJoiner is a tool for easing the task of creating Map/Reduce Jobs that must perform a join over an arbitrary
- * number of "channels". For an illustrative example, see {@link TestMultiJoiner}.
+ * number of "channels".
  * <p>
  * The channels are identified by the user, and the API applies secondary sort on them so that instances from each
  * channel are received in a deterministic order in the reducer implementation. There is also the possibility to add one
  * more level of secondary sorting. For this, we need to provide a consistent {@link MultiJoinPair} by calling
- * setMultiJoinPairClass() method. For an illustrative example, check {@link TestMultiJoinerSecondarySort}.
+ * setMultiJoinPairClass() method. 
  * <p>
  * This API supports any kind of serialization in the key and the value by leveraging Hadoop's Serialization API.
  * <p>
@@ -51,10 +64,10 @@ public class MultiJoiner {
 
 	private final static Logger log = LoggerFactory.getLogger(MultiJoiner.class);
 
-	public static final String MULTIJOINER_CHANNELS = "pangolin.multijoiner.channels";
-	public static final String MULTIJOINER_CLASSES = "pangolin.multijoiner.classes";
+	public static final String MULTIJOINER_CHANNELS = "datasalt.multijoiner.channels";
+	public static final String MULTIJOINER_CLASSES = "datasalt.multijoiner.classes";
 
-	public static final String MULTIJOINER_KEY_IMPL = "pangolin.multijoiner.key.impl";
+	public static final String MULTIJOINER_KEY_IMPL = "datasalt.multijoiner.key.impl";
 
 	private Job job = null;
 	private String name;

@@ -1,3 +1,19 @@
+/**
+ * Copyright [2011] [Datasalt Systems S.L.]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.datasalt.utils.mapred.joiner;
 
 import static org.junit.Assert.*;
@@ -6,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.util.Iterator;
 
-import com.datasalt.pangolin.thrift.test.A;
+import com.datasalt.utils.thrift.test.A;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -19,14 +35,14 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.junit.Test;
 
 import com.datasalt.utils.commons.HadoopUtils;
-import com.datasalt.utils.commons.test.PangolinBaseTest;
+import com.datasalt.utils.commons.test.BaseTest;
 import com.datasalt.utils.mapred.joiner.MultiJoinChanneledMapper;
 import com.datasalt.utils.mapred.joiner.MultiJoinDatum;
 import com.datasalt.utils.mapred.joiner.MultiJoinPair;
 import com.datasalt.utils.mapred.joiner.MultiJoinReducer;
 import com.datasalt.utils.mapred.joiner.MultiJoiner;
 
-public class TestMultiJoinerSameClass extends PangolinBaseTest {
+public class TestMultiJoinerSameClass extends BaseTest {
 
 	public static final String OUTPUT_FOR_TEST = "test-" +TestMultiJoinerSameClass.class.getName();
 	

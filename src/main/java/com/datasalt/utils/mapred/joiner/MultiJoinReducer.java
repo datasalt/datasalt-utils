@@ -1,3 +1,19 @@
+/**
+ * Copyright [2011] [Datasalt Systems S.L.]
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.datasalt.utils.mapred.joiner;
 
 import java.io.IOException;
@@ -9,7 +25,7 @@ import org.apache.hadoop.util.ReflectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.datasalt.utils.mapred.PangolinReducer;
+import com.datasalt.utils.mapred.BaseReducer;
 
 /**
  * You can extend MultiJoinReducer in order to have a shorter implementation of your {@link MultiJoiner} reducer. You can use the
@@ -18,7 +34,7 @@ import com.datasalt.utils.mapred.PangolinReducer;
  * K is the output key type and V is the output value type.
  */
 @SuppressWarnings("rawtypes")
-public abstract class MultiJoinReducer<KEYOUT, VALUEOUT> extends PangolinReducer<MultiJoinPair, MultiJoinDatum<?>, KEYOUT, VALUEOUT> {
+public abstract class MultiJoinReducer<KEYOUT, VALUEOUT> extends BaseReducer<MultiJoinPair, MultiJoinDatum<?>, KEYOUT, VALUEOUT> {
 
 	private final static Logger log = LoggerFactory.getLogger(MultiJoinReducer.class);
 	private HashMap<Integer, Object> instances = new HashMap<Integer, Object>();
