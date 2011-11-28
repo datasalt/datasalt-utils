@@ -21,7 +21,6 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.util.HashMap;
 
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -35,14 +34,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-
-
-
+import com.datasalt.utils.commons.BaseConfigurationFactory;
 import com.datasalt.utils.commons.HadoopTestUtils;
 import com.datasalt.utils.commons.HadoopUtils;
 import com.datasalt.utils.commons.test.BaseTest;
 import com.datasalt.utils.io.LongPairWritable;
-import com.datasalt.utils.mapred.counter.MapRedCounter;
 import com.datasalt.utils.mapred.counter.io.CounterDistinctKey;
 import com.datasalt.utils.mapred.counter.io.CounterKey;
 
@@ -112,6 +108,53 @@ public class TestMapRedCounter extends BaseTest {
 		test(false);
 	}
 
+	@Test
+	public void testWithMinimumCountOtherThan1WithCombiner() throws IOException, InterruptedException, ClassNotFoundException, CloneNotSupportedException {
+		test(true);
+	}
+	
+	@Test
+	public void testWithMinimumCountOtherThan1WithoutCombiner() throws IOException, InterruptedException, ClassNotFoundException, CloneNotSupportedException {
+		testWithMinimumCountOtherThan1(false);
+	}
+	
+	public void testWithMinimumCountOtherThan1(boolean withCombiner) throws IOException, InterruptedException, ClassNotFoundException, CloneNotSupportedException {
+		Configuration conf = BaseConfigurationFactory.getInstance().getConf();
+		Job job;
+
+		/*
+		 * Set minimum count
+		 */
+		conf.setInt(MapRedCounter.MINIMUM_COUNT_FOR_GROUP_CONF_PREFIX + "0", 2);
+		conf.setInt(MapRedCounter.MINIMUM_COUNT_FOR_GROUP_CONF_PREFIX + "1", 2);
+		conf.setInt(MapRedCounter.MINIMUM_COUNT_FOR_GROUP_CONF_PREFIX + "2", 2);
+		
+		if (withCombiner) {
+			job = MapRedCounter.buildMapRedCounterJob("counter", SequenceFileOutputFormat.class, OUTPUT_COUNT, conf);
+		} else {
+			job = MapRedCounter.buildMapRedCounterJobWithoutCombiner("counter", SequenceFileOutputFormat.class, OUTPUT_COUNT, conf);
+		}
+		
+		MapRedCounter.addInput(job, new Path(SINGLE_LINE_FILE), TextInputFormat.class, TestMapper.class);
+		
+		job.waitForCompletion(true);
+		
+		HashMap<String, Long> itemCount = itemCountAsMap(getFs(), OUTPUT_COUNT + "/" + MapRedCounter.Outputs.COUNTFILE + "-r-00000");		
+		HashMap<String, LongPairWritable> itemGroupCount = itemGroupCountAsMap (getFs(), OUTPUT_COUNT + "/" + MapRedCounter.Outputs.COUNTDISTINCTFILE + "-r-00000");
+	
+		assertCount(2, "2:c6d3:c", itemCount);
+		assertCount(2, "2:c6d3:b", itemCount);
+		assertCount(2, "2:c6d3:a", itemCount);
+		
+		assertCount(2, "1:c3d2:a", itemCount);
+		
+		assertCount(2, "1:c2d1:a", itemCount);
+
+		assertGroupCount(6, 3, "2:c6d3", itemGroupCount);
+		assertGroupCount(2, 1, "1:c3d2", itemGroupCount);
+		assertGroupCount(2, 1, "1:c2d1", itemGroupCount);
+	}
+	
 	public void test(boolean withCombiner) throws IOException, InterruptedException, ClassNotFoundException, CloneNotSupportedException {
 		Configuration conf = getConf();
 		Job job;
