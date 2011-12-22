@@ -154,7 +154,7 @@ public class ExpiringSemaphore {
 	/**
 	 * This method iterates the queue and returns how many permits have its timestamp > 'now'.
 	 * 
-	 * @return
+	 * 
 	 */
 	public int usedPermits() {
 		synchronized(putMonitor) {
@@ -172,7 +172,7 @@ public class ExpiringSemaphore {
 	/**
 	 * This method returns the number of permits that where acquired by acquire() that were already expired.
 	 * 
-	 * @return
+	 * 
 	 */
 	public int expiredCount() {
 		return expiredCount;
@@ -181,7 +181,7 @@ public class ExpiringSemaphore {
 	/**
 	 * This method iterates the queue and returns how many permits have its timestamp <= 'now'.
 	 * 
-	 * @return
+	 * 
 	 */
 	public int availablePermits() {
 		synchronized(putMonitor) {
@@ -204,7 +204,7 @@ public class ExpiringSemaphore {
 	 * In order to know the total number of expired permits by a semaphore when we stop using it, the correct formula to use is:
 	 * currentlyExpiredPermits() + expiredCount()
 	 * 
-	 * @return
+	 * 
 	 */
 	public int currentlyExpiredPermits() {
 		synchronized(putMonitor) {

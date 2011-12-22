@@ -93,8 +93,7 @@ public class SolrAdminCoreUtils {
 	
 	/**
 	 * It expects something like :   http://shard1_replica1:8500/solr|http://shard1_replica2:8501/solr,shard2_replica1:8502/solr|http://shard2_replica2:8503/solr,  ...
-	 * @param csvShardReplicas
-	 * @return
+	 * 
 	 * @throws MalformedURLException
 	 */
 	public static List<URL[]> parseShardReplicas(String csvShardReplicas) throws MalformedURLException{
@@ -126,7 +125,7 @@ public class SolrAdminCoreUtils {
 	 * Extracts the core names using the subfolder names of the specified folder
 	 * @param fs
 	 * @param coreFolder
-	 * @return
+	 * 
 	 * @throws IOException
 	 */
 	public static List<String> findCoresToDeploy(FileSystem fs,Path coreFolder) throws IOException{
@@ -153,8 +152,5 @@ public class SolrAdminCoreUtils {
       return false;
     } }
 	}
-	
-	
-	
-	
+
 }

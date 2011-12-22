@@ -320,8 +320,8 @@ public class CrossProductMapRed<K, V> {
 	 * By invoking this method after the job has run, we can know if we need to run a second Job to perform the full
 	 * cross-product. It is the user responsability to do something with this information.
 	 * 
-	 * @param job
-	 * @return
+	 * 
+	 * 
 	 * @throws IOException
 	 */
 	public boolean isSecondJobNeeded() throws IOException {
@@ -331,7 +331,7 @@ public class CrossProductMapRed<K, V> {
 	/**
 	 * This Path points to the Glob that will be input to the second Map/Red Job. Useful for unit testing.
 	 * 
-	 * @return
+	 * 
 	 */
 	public Path getBigGroupsGlob() {
 		return new Path(outputPath, CrossProductMapRed.EXTRA_OUTPUT + "*");
@@ -341,7 +341,7 @@ public class CrossProductMapRed<K, V> {
 	 * This Path points to the output of the second Map/Red Job, which is an extension to the output provided by the user
 	 * in the first Job.
 	 * 
-	 * @return
+	 * 
 	 */
 	public Path getBigGroupsOutput() {
 		return new Path(outputPath + "_big_groups");
@@ -350,7 +350,7 @@ public class CrossProductMapRed<K, V> {
 	/**
 	 * This Path points to the Glob representing the useful output of the second Job.
 	 * 
-	 * @return
+	 * 
 	 */
 	public Path getBigGroupsOutputGlob() {
 		return new Path(getBigGroupsOutput() + "/" + "part*");
@@ -359,7 +359,7 @@ public class CrossProductMapRed<K, V> {
 	/**
 	 * This method returns the second Job that can be executed after the first Job if needed.
 	 * 
-	 * @return
+	 * 
 	 * @throws IOException
 	 */
 	public Job getSecondJob() throws IOException {

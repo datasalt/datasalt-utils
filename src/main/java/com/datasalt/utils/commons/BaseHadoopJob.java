@@ -53,7 +53,7 @@ public abstract class BaseHadoopJob extends BaseJob {
 	 * This method can be used to return properties from this job (e.g. counters, statistics, generated properties...) 
 	 * to Azkaban
 	 * 
-	 * @return
+	 * 
 	 */
 	public abstract Properties getJobGeneratedProperties(Job job);
 

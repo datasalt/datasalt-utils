@@ -22,9 +22,10 @@ import org.apache.hadoop.io.BytesWritable;
 import org.apache.hadoop.io.WritableComparator;
 
 import com.datasalt.utils.io.IdDatumPairBase;
+import com.datasalt.utils.mapred.counter.MapRedCounter;
 
 /**
- * A class used in the {@link MapRedCounter}
+ * Class used as key in {@link MapRedCounter}
  * 
  * @author epalace
  */

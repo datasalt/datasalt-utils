@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.datasalt.utils.commons;
 
 import java.io.IOException;
@@ -78,7 +77,6 @@ public class SSHUtils {
 	/**
 	 * Reads an InputStream and dumps it to a stream
 	 * @param is
-	 * @return
 	 * @throws IOException
 	 */
 	public static String convertStreamToString(InputStream is)throws IOException {

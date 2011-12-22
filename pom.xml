@@ -4,12 +4,74 @@
 
   <groupId>com.datasalt</groupId>
   <artifactId>datasalt-utils</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0</version>
   <packaging>jar</packaging>
 
-  <name>datasalt-utils</name>
-  <url>http://www.datasalt.com</url>
+  <name>Datasalt utils</name>
+  <url>https://github.com/datasalt/datasalt-utils</url>
+  <description><![CDATA[Common utils used in <a href="www.datasalt.com">Datasalt S.L.</a>]]></description>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
+  <scm>
+    <url>https://github.com/datasalt/datasalt-utils</url>
+    <connection>scm:git:git@github.com:datasalt/datasalt-utils.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <id>eric</id>
+      <name>Eric Palacios</name>
+      <email>epalacios@datasalt.com</email>
+      <url></url>
+      <organization>Datasalt S.L.</organization>
+      <organizationUrl>www.datasalt.com</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>-1</timezone>
+      <properties>
+        <picUrl>http://4wheels4life.files.wordpress.com/2008/10/david-hasselhoff.jpg</picUrl>
+      </properties>
+    </developer>
+    <developer>
+      <id>ivan</id>
+      <name>Ivan de Prado</name>
+      <email>ivan@datasalt.com</email>
+      <url></url>
+      <organization>Datasalt S.L.</organization>
+      <organizationUrl>www.datasalt.com</organizationUrl>
+      <roles>
+	<role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>-1</timezone>
+      <properties>
+        <picUrl></picUrl>
+      </properties>
+    </developer>
+    <developer>
+      <id>pere</id>
+      <name>Pere Ferrera</name>
+      <email>pere@datasalt.com</email>
+      <url></url>
+      <organization>Datasalt S.L.</organization>
+      <organizationUrl>www.datasalt.com</organizationUrl>
+      <roles>
+	<role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>-1</timezone>
+      <properties>
+        <picUrl></picUrl>
+      </properties>
+    </developer>
+    
+  </developers>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -21,23 +83,8 @@
       <version>4.8.2</version>
       <scope>test</scope>
     </dependency>
-   <!-- 
-   <dependency>
-      <groupId>org.javatuples</groupId>
-      <artifactId>javatuples</artifactId>
-      <version>1.2</version>
-    </dependency>
-    -->
-   
-    <!-- Mockito for mocking in unit testing -->
-<!--
-   <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
-      <version>1.8.5</version>
-    </dependency>
--->
-      <!-- Very usefull Google's guava - Nice collections API -->
+      
+<!-- Very usefull Google's guava - Nice collections API -->
    <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
@@ -45,40 +92,13 @@
     </dependency>
       <!-- Logging: SL4J flexible logging API -->        
     
-<!--    
-  <dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-api</artifactId>
-    <version>1.6.4</version>
-  </dependency>
-  
-  <dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-log4j12</artifactId>
-    <version>1.6.4</version>
-    <scope>test</scope>
-  </dependency>
-    -->
       
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.16</version>
     </dependency>
-<!--    
-    <dependency>
-      <groupId>com.ning</groupId>
-      <artifactId>async-http-client</artifactId>
-      <version>1.6.4</version>
-    </dependency>
--->
-    <!--  
-    <dependency>
-      <groupId>net.peerindex</groupId>
-      <artifactId>libthrift</artifactId>
-      <version>0.6.1-snapshot</version>
-    </dependency>          
-    -->
+    
     <dependency>
       <groupId>org.apache.thrift</groupId>
       <artifactId>libthrift</artifactId>
@@ -94,42 +114,6 @@
       <version>2.9.1</version>
     </dependency>          
     
-     <!-- Jackson: fast JSON ser/de -->
-   <!--
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-core-asl</artifactId>
-      <version>1.7.3</version>
-    </dependency>          
-     
-     <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-core-lgpl</artifactId>
-      <version>1.7.3</version>
-    </dependency> 
-    
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-jaxrs</artifactId>
-      <version>1.7.3</version>
-    </dependency> 
-     
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
-      <version>1.7.3</version>
-    </dependency> 
-    
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-lgpl</artifactId>
-      <version>1.7.3</version>
-    </dependency>  
-    -->
-    
-    
-    
-    
       <!-- Cloudera's CDH3 Hadoop -->
     <dependency>
       <groupId>org.apache.hadoop</groupId>
@@ -137,81 +121,12 @@
       <version>0.20.2-cdh3u0</version>
     </dependency>  
       
-    <!-- MRUnit for Hadoop Unit Testing -->
-   <!-- 
-    <dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-mrunit</artifactId>
-      <version>0.20.2-cdh3u0</version>
-    </dependency>
--->
-    <!-- Azkaban commons -->
-   <!-- 
-    <dependency>
-      <groupId>net.peerindex.azkaban</groupId>
-      <artifactId>azkaban-common</artifactId>
-      <version>1.0</version>
-    </dependency>  
--->
-
-<!--
-    <dependency>
-      <groupId>org.htmlparser</groupId>
-      <artifactId>htmlparser</artifactId>
-      <version>2.1</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>net.htmlparser.jericho</groupId>
-      <artifactId>jericho-html</artifactId>
-      <version>3.2</version>
-    </dependency>
-    -->
-    <!-- CSV Reader / Writer -->
-    <!--
-    <dependency>
-      <groupId>net.sf.opencsv</groupId>
-      <artifactId>opencsv</artifactId>
-      <version>2.3</version>
-    </dependency>
-    -->
-    <!-- Twitter4J -->
-   <!-- 
-   <dependency>
-      <groupId>org.twitter4j</groupId>
-      <artifactId>twitter4j-async</artifactId>
-      <version>2.2.3</version>
-    </dependency>
-    
-    -->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-io</artifactId>
       <version>1.3.2</version>
     </dependency>
     
-    
-    
-    <!-- HttpClient 4 -->
-   <!-- 
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.1.2</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpcore</artifactId>
-      <version>4.1.3</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpcore-nio</artifactId>
-      <version>4.1.3</version>
-    </dependency>
-      -->
     <dependency>
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
@@ -250,60 +165,16 @@
       <artifactId>solr-core</artifactId>
       <version>3.3.0</version>
     </dependency>
-<!--
-    <dependency>
-      <groupId>com.sun.jersey</groupId>
-      <artifactId>jersey-core</artifactId>
-      <version>1.4</version>
-    </dependency>
-    -->
-    
-    
-    <!--dependency org="org.apache.solr" name="solr" rev="3.3.0"/-->
-    <!--dependency org="org.apache.solr" name="solr-common" rev="3.3.0"/-->
-    
-    <!-- Wonderdog (ElasticSearch Hadoop) -->
-    <!--dependency org="com.infochimps.elasticsearch" name="wonderdog" rev="1.0-SNAPSHOT"/-->
-    <!-- <dependency org="org.elasticsearch" name="elasticsearch" rev="0.16.0"/> -->
 
     <dependency>
       <groupId>org.apache.velocity</groupId>
       <artifactId>velocity-tools</artifactId>
       <version>1.3</version>
     </dependency>
-
-  
-
-  <!-- 
-    <dependency>
-      <groupId>com.ml</groupId>
-      <artifactId>libsvm</artifactId>
-      <version>2.89</version>
-    </dependency>
-
-    <dependency>
-      <groupId>de.bwaldvogel</groupId>
-      <artifactId>liblinear</artifactId>
-      <version>1.8</version>
-    </dependency>
-    -->
-    
-    <!-- <dependency org="com.ml" name="liblinear" rev="1.33" /> -->
     
   </dependencies>
   
   <repositories>
-<!--
-	  <repository>
-	      <id>central</id>
-	      <name>Maven Repository Switchboard</name>
-	      <layout>default</layout>
-	      <url>http://repo1.maven.org/maven2</url>
-	      <snapshots>
-	        <enabled>false</enabled>
-	      </snapshots>
-	    </repository>
--->	  
    <repository>
       <id>cloudera</id>
       <name>Cloudera Releases</name>
@@ -317,71 +188,6 @@
       </snapshots>
     </repository>
     
-    <!-- 
-    <repository>
-      <id>sonatype-releases</id>
-      <name>Sonatype Releases</name>
-      <url>http://oss.sonatype.org/content/repositories/releases</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    -->
-
-<!--
-    <repository>
-      <id>nexus-public</id>
-      <name>Nexus public</name>
-      <url>http://nexus.viewsflow.com/nexus/content/groups/public/</url>
-      
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    
-    
-    <repository>
-      <id>nexus-thirdparty</id>
-      <name>Nexus Thirdparty</name>
-      <url>http://nexus.viewsflow.com/nexus/content/repositories/thirdparty/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    
-    <repository>
-      <id>nexus-releases</id>
-      <name>Nexus Releases</name>
-      <url>http://nexus.viewsflow.com/nexus/content/repositories/releases/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    
-    <repository>
-      <id>nexus-snapshots</id>
-      <name>Nexus Snapshots</name>
-      <url>http://nexus.viewsflow.com/nexus/content/repositories/snapshots/</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
--->
   </repositories>
   
   
@@ -396,8 +202,20 @@
      <target>1.6</target>
     </configuration>
    </plugin>
-   
-   
+   <!--<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin> 
+   -->
    <!-- In order to add aditional source folders -->
    <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -470,20 +288,45 @@
         </plugins>
       </build>
     </profile>
+	<profile>
+    <id>release-sign-artifacts</id>
+    <activation>
+      <property>
+        <name>performRelease</name>
+        <value>true</value>
+      </property>
+    </activation>
+    <build>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.1</version>
+          <executions>
+            <execution>
+              <id>sign-artifacts</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </build>
+  </profile>
   </profiles>
-<distributionManagement>
-  <!-- use the following if you're not using a snapshot version. -->
-  <!--<repository>
-    <id>repo</id>
-    <name>Repository Name</name>
-    <url>scp://host/path/to/repo</url>
-  </repository>-->
-  <!-- use the following if you ARE using a snapshot version. -->
-  <snapshotRepository>
-    <id>nexus-viewsflow</id>
-    <name>Nexus viewsflow</name>
-    <url>http://nexus.viewsflow.com/nexus/content/repositories/snapshots/</url>
-  </snapshotRepository>
-</distributionManagement> 
-  
+  <distributionManagement>
+  </distributionManagement> 
+ <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.8</version>
+        <configuration>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting> 
 </project>

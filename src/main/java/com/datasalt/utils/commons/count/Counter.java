@@ -94,7 +94,7 @@ public class Counter {
    * This method creates a counter that besides just counting numerically , it
    * keeps track of the distinct elements counted.
    * 
-   * @return
+   *
    */
   public static Counter createWithDistinctElements() {
     return new Counter(true);
@@ -102,10 +102,7 @@ public class Counter {
 
   /**
    * This creates a counter that doesn't store elements, just numeric counters,
-   * hence the methods to retrieve elements like {@link
-   * getDistinctListAsStringList()}  {@link getDistinctList()} throw an exception.
-   * 
-   * @return
+   * hence the methods to retrieve elements like {@link Count#getDistinctListAsStringList()} and {@link Count#getDistinctList()} throw an exception.
    */
   public static Counter numericCounter() {
     return new Counter(false);
@@ -127,7 +124,7 @@ public class Counter {
      * TODO Important! document this much better or refactor. This count is like a SELECT COUNT(*) , not a SELECT COUNT(DISTINCT) 
      * 
      * Explain that even with countDistinct=true the count refers to all the elements counted, 
-     * even if they were repeated and don't appear in getDistinctList() 
+     * even if they were repeated and don't appear in {@link Count#getDistinctList()} 
      * 
      */
     public long getCount() {

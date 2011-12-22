@@ -38,7 +38,6 @@ public class URLUtils {
 	 * other data.  Also might be usefull for testing later on .
 	 * @param base
 	 * @param pars
-	 * @return
 	 */
 	@SuppressWarnings("rawtypes")
   public static String getUrlFromParameters(String base, Map pars)
@@ -61,7 +60,6 @@ public class URLUtils {
 	   
 	   "122524694445860|7fc6dd5fe13b43c09dad009d.1-1056745212|An3Xub_HEDRsGxVPkmy71VdkFhQ"
 	 * @param url
-	 * @return
 	 */
 	public static Hashtable<String,String> extractParameters(String url)
 	{

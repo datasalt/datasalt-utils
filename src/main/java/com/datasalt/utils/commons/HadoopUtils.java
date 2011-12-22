@@ -166,7 +166,7 @@ public class HadoopUtils {
 	 * 
 	 * @param conf
 	 * @param filePostFix
-	 * @return
+	 * 
 	 * @throws IOException
 	 */
 	public static Path locateFileInDC(Configuration conf, String filePostFix) throws IOException {

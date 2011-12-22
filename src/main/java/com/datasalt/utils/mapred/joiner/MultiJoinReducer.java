@@ -22,8 +22,6 @@ import java.util.HashMap;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.util.ReflectionUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.datasalt.utils.mapred.BaseReducer;
 
@@ -36,7 +34,7 @@ import com.datasalt.utils.mapred.BaseReducer;
 @SuppressWarnings("rawtypes")
 public abstract class MultiJoinReducer<KEYOUT, VALUEOUT> extends BaseReducer<MultiJoinPair, MultiJoinDatum<?>, KEYOUT, VALUEOUT> {
 
-	private final static Logger log = LoggerFactory.getLogger(MultiJoinReducer.class);
+	//private final static Logger log = LoggerFactory.getLogger(MultiJoinReducer.class);
 	private HashMap<Integer, Object> instances = new HashMap<Integer, Object>();
 	private HashMap<Integer, Class> classes = new HashMap<Integer, Class>();
 	private Configuration conf;

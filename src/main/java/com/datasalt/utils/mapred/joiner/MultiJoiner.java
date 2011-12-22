@@ -29,8 +29,6 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.OutputFormat;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.datasalt.utils.commons.HadoopUtils;
 
@@ -56,13 +54,15 @@ import com.datasalt.utils.commons.HadoopUtils;
  * </ul>
  * <p>
  * 
- * @author epalace, pere
+ * @author pere
+ * @author epalace
+ * 
  * 
  */
 @SuppressWarnings({ "rawtypes" })
 public class MultiJoiner {
 
-	private final static Logger log = LoggerFactory.getLogger(MultiJoiner.class);
+	//private final static Logger log = LoggerFactory.getLogger(MultiJoiner.class);
 
 	public static final String MULTIJOINER_CHANNELS = "datasalt.multijoiner.channels";
 	public static final String MULTIJOINER_CLASSES = "datasalt.multijoiner.classes";
@@ -92,7 +92,7 @@ public class MultiJoiner {
 		this.conf = conf;
 	}
 
-	@SuppressWarnings("unchecked")
+	
   public Job getJob() throws IOException {
 		if(job == null) {
 			job = new Job(conf, name);
@@ -119,11 +119,10 @@ public class MultiJoiner {
 
 	public static List<String> readStringListFromConfig(Configuration conf, String what) {
 		List<String> clazzes = new ArrayList<String>();
-		int id = 0;
 		String[] classes = conf.get(what).split(",");
 		for(String className : classes) {
 			clazzes.add(className);
-			id++;
+		
 		}
 		return clazzes;
 	}
@@ -159,7 +158,7 @@ public class MultiJoiner {
 	 * @param location
 	 * @param inputFormat
 	 * @param mapper
-	 * @return
+	 * 
 	 * @throws IOException
 	 */
 	public MultiJoiner addInput(Path location, Class<? extends InputFormat> inputFormat,
@@ -173,7 +172,7 @@ public class MultiJoiner {
 	 * 
 	 * @param channel
 	 * @param channelClass
-	 * @return
+	 * 
 	 * @throws IOException
 	 */
 	public MultiJoiner setChannelDatumClass(Integer channel, Class<? extends Object> channelClass) throws IOException {
@@ -195,7 +194,7 @@ public class MultiJoiner {
 	 * @param channelClass
 	 * @param inputFormat
 	 * @param mapper
-	 * @return
+	 * 
 	 * @throws IOException
 	 */
 	public MultiJoiner addChanneledInput(Integer channel, Path location, Class<? extends Object> channelClass,

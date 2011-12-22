@@ -53,6 +53,7 @@ public class FrequencyCounter<T extends Comparable<T>> extends HashMap<T, Intege
 		return count;
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<T> getTop(int n) {
 		List<T> listToReturn = new ArrayList<T>(n);
 		Map.Entry[] entries = entrySet().toArray(new Map.Entry[0]);

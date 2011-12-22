@@ -131,7 +131,7 @@ public class SolrOutputFormat<K, V> extends FileOutputFormat<K, V> {
    * the raw index
    * 
    * @param conf
-   * @return
+   * 
    */
   public static boolean isOutputZipFormat(Configuration conf) {
     return conf.getBoolean(OUTPUT_ZIP_FILE, false);
