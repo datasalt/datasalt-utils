@@ -2,6 +2,9 @@ package org.apache.hadoop.mapreduce.lib.input;
 
 import org.apache.hadoop.mapreduce.InputSplit;
 
+
+
+
 public class GetInputFileFromTaggedInputSplit {
 
 	public static String get(InputSplit iS) {

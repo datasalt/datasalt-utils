@@ -31,9 +31,10 @@ import org.apache.hadoop.mapreduce.InputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.OutputFormat;
 import org.apache.hadoop.mapreduce.Reducer;
+
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.MultipleOutputsPatched;
+import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
 import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.apache.thrift.TBase;
 import org.slf4j.Logger;
@@ -263,7 +264,7 @@ public class MapRedCounter {
 
 		final static Logger log = LoggerFactory.getLogger(MapRedCountReducer.class);
 
-		MultipleOutputsPatched mos;
+		MultipleOutputs mos;
 
 		LongWritable currentItemCount = new LongWritable();
 
@@ -285,7 +286,7 @@ public class MapRedCounter {
 		@SuppressWarnings("unchecked")
 		protected void setup(Context context) throws IOException, InterruptedException {
 			super.setup(context);
-			mos = new MultipleOutputsPatched(context);
+			mos = new MultipleOutputs(context);
 			ser = new Serialization(context.getConfiguration());
 			// Iterate over the configuration to see if there is any minimum count configured for certain groups
 			for(Map.Entry<String, String> entry : context.getConfiguration()) {
@@ -446,10 +447,10 @@ public class MapRedCounter {
 		FileOutputFormat.setOutputPath(job, output);
 
 		// Multioutput configuration
-		MultipleOutputsPatched.setCountersEnabled(job, true);
-		MultipleOutputsPatched.addNamedOutput(job, Outputs.COUNTFILE.toString(), SequenceFileOutputFormat.class,
+		MultipleOutputs.setCountersEnabled(job, true);
+		MultipleOutputs.addNamedOutput(job, Outputs.COUNTFILE.toString(), SequenceFileOutputFormat.class,
 		    CounterKey.class, LongWritable.class);
-		MultipleOutputsPatched.addNamedOutput(job, Outputs.COUNTDISTINCTFILE.toString(), SequenceFileOutputFormat.class,
+		MultipleOutputs.addNamedOutput(job, Outputs.COUNTDISTINCTFILE.toString(), SequenceFileOutputFormat.class,
 		    CounterDistinctKey.class, LongPairWritable.class);
 
 		return job;

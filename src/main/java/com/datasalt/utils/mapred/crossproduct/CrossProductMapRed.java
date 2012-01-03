@@ -28,7 +28,7 @@ import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mapreduce.InputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.OutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.MultipleOutputsPatched;
+import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
 import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -107,7 +107,7 @@ public class CrossProductMapRed<K, V> {
 	 */
 	public static class CrossProductReducer extends MultiJoinReducer<CrossProductPair, NullWritable> {
 
-		MultipleOutputsPatched mOs;
+		MultipleOutputs mOs;
 		int splitSize;
 		List<BytesWritable> inMemoryData = new ArrayList<BytesWritable>(splitSize);
 		CrossProductPair toEmit = new CrossProductPair();
@@ -118,7 +118,7 @@ public class CrossProductMapRed<K, V> {
 		protected void setup(Context context) throws IOException, InterruptedException {
 
 			super.setup(context);
-			mOs = new MultipleOutputsPatched(context);
+			mOs = new MultipleOutputs(context);
 			splitSize = context.getConfiguration().getInt(SPLIT_DATASET_SIZE_CONF, SPLIT_DATASET_SIZE_DEFAULT);
 			log.info("Cross product split size is [" + splitSize + "]");
 		};
@@ -292,8 +292,8 @@ public class CrossProductMapRed<K, V> {
 			/*
 			 * Outputs
 			 */
-			MultipleOutputsPatched.setCountersEnabled(job, true);
-			MultipleOutputsPatched.addNamedOutput(job, EXTRA_OUTPUT, SequenceFileOutputFormat.class,
+			MultipleOutputs.setCountersEnabled(job, true);
+			MultipleOutputs.addNamedOutput(job, EXTRA_OUTPUT, SequenceFileOutputFormat.class,
 			    CrossProductExtraKey.class, CrossProductPair.class);
 			this.job = job;
 		}
@@ -323,8 +323,9 @@ public class CrossProductMapRed<K, V> {
 	 * 
 	 * 
 	 * @throws IOException
+	 * @throws InterruptedException 
 	 */
-	public boolean isSecondJobNeeded() throws IOException {
+	public boolean isSecondJobNeeded() throws IOException, InterruptedException {
 		return getJob().getCounters().getGroup("stats").findCounter(Counters.NOTFITTINGINMEMORY + "").getValue() > 0;
 	}
 

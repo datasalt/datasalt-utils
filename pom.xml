@@ -4,7 +4,7 @@
 
   <groupId>com.datasalt</groupId>
   <artifactId>datasalt-utils</artifactId>
-  <version>0.1.0</version>
+  <version>0.0.22-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Datasalt utils</name>
@@ -93,11 +93,11 @@
       <!-- Logging: SL4J flexible logging API -->        
     
       
-    <dependency>
+    <!--dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.16</version>
-    </dependency>
+    </dependency-->
     
     <dependency>
       <groupId>org.apache.thrift</groupId>
@@ -115,11 +115,36 @@
     </dependency>          
     
       <!-- Cloudera's CDH3 Hadoop -->
-    <dependency>
+    <!--dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-core</artifactId>
       <version>0.20.2-cdh3u0</version>
-    </dependency>  
+    </dependency-->  
+    <!--dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-core</artifactId>
+      <version>0.20.205.0</version>
+    </dependency-->  
+    <!--dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-core</artifactId>
+      <version>1.0.0</version>
+    </dependency-->
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-common</artifactId>
+      <version>0.22.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-mapred</artifactId>
+      <version>0.22.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-hdfs</artifactId>
+      <version>0.22.0</version>
+    </dependency>
       
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -316,8 +341,15 @@
     </build>
   </profile>
   </profiles>
-  <distributionManagement>
-  </distributionManagement> 
+<distributionManagement>
+
+  <!-- TO publish a snapshot set correctly ~/.m2/settings.xml and use : mvn deploy -->
+  <snapshotRepository>
+    <id>nexus-viewsflow</id>
+    <name>Nexus viewsflow</name>
+    <url>http://nexus.viewsflow.com/nexus/content/repositories/snapshots/</url>
+  </snapshotRepository>
+</distributionManagement> 
  <reporting>
     <plugins>
       <plugin>

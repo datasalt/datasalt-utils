@@ -42,7 +42,7 @@ public class TestRepoTool extends BaseTest {
 
 		RepoTool tool = new RepoTool(repo, "pkg", fs);
 		
-		assertNull(tool.getNewestPackageWithStatus(PackageStatus.NOT_DEFINED));
+		//assertNull(tool.getNewestPackageWithStatus(PackageStatus.NOT_DEFINED));
 		
 		Path pkg1 = tool.newPackage();
 		assertEquals("pkg", pkg1.getName().substring(0,3));
