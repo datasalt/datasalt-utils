@@ -4,7 +4,7 @@
 
   <groupId>com.datasalt</groupId>
   <artifactId>datasalt-utils</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Datasalt utils</name>
@@ -317,6 +317,12 @@
   </profile>
   </profiles>
   <distributionManagement>
+    <!-- TO publish a snapshot set correctly ~/.m2/settings.xml and use : mvn deploy -->
+    <snapshotRepository>
+      <id>nexus-viewsflow</id>
+      <name>Nexus viewsflow</name>
+      <url>http://admin2.peerindex.net:8081/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
   </distributionManagement> 
  <reporting>
     <plugins>

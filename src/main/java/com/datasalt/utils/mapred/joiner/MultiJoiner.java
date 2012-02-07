@@ -24,6 +24,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.fs.PathFilter;
 import org.apache.hadoop.mapreduce.InputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.OutputFormat;
@@ -181,6 +182,13 @@ public class MultiJoiner {
 		return this;
 	}
 
+	private static final PathFilter hiddenFileFilter = new PathFilter(){
+    public boolean accept(Path p){
+      String name = p.getName(); 
+      return !name.startsWith("_") && !name.startsWith("."); 
+    }
+  }; 
+  
 	/**
 	 * Adds a CHANNELED input specification. A channeled input specification is a channel associated to a Mapper and a
 	 * input file or glob. The user will implement a {@link MultiJoinChanneledMapper} which will be tied to a single
@@ -205,11 +213,11 @@ public class MultiJoiner {
 		setChannelDatumClass(channel, channelClass);
 		FileSystem fS = FileSystem.get(getJob().getConfiguration());
 		if(location.toString().contains("*")) { // is a glob
-			for(FileStatus fSt : fS.globStatus(location)) { // expands the glob
+			for(FileStatus fSt : fS.globStatus(location, hiddenFileFilter)) { // expands the glob
 				addChanneledInputInner(channel, fSt.getPath(), channelClass, inputFormat, mapper);
 			}
 		} else if(fS.getFileStatus(location).isDir()) {
-			for(FileStatus fSt : fS.listStatus(location)) { // expands the glob
+			for(FileStatus fSt : fS.listStatus(location, hiddenFileFilter)) { // expands the glob
 				addChanneledInputInner(channel, fSt.getPath(), channelClass, inputFormat, mapper);
 			}
 		} else {
