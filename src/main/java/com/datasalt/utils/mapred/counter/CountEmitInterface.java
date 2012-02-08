@@ -43,4 +43,8 @@ public interface CountEmitInterface {
 	 */
 	void emit(int typeIdentifier, Object group, Object item) throws IOException, InterruptedException ;
 
+	/**
+	 * Same as {@link #emit(int, Object, Object)} but with a previously known number of times to account
+	 */
+	void emit(int typeIdentifier, Object group, Object item, long nTimes) throws IOException, InterruptedException ;
 }
