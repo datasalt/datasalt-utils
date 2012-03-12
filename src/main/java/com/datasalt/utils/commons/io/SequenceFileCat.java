@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile;
@@ -53,9 +54,16 @@ public class SequenceFileCat {
 		FileSystem fs = FileSystem.get(conf);
 		List<Path> inputs = new ArrayList<Path>();
 		for (int i=0 ; i < args.length -1 ; i++){
-			inputs.add(new Path(args[i]));
+			Path p = new Path(args[i]);
+			FileStatus[] statuses = fs.globStatus(p);
+			for (FileStatus s : statuses){
+				Path sP = s.getPath();
+				System.out.println("Input:" + sP);
+				inputs.add(sP);
+			}
 		}
 		Path output = new Path(args[args.length-1]);
+		System.out.println("Output:" + output);
 		concat(fs,conf,inputs,output);
 	}
 	
