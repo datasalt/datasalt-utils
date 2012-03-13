@@ -1,9 +1,11 @@
 package com.datasalt.utils.commons.io;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile;
@@ -126,14 +128,42 @@ public class SequenceFileCat {
 						partialCount++;
 			}
 			long partialEnd = System.currentTimeMillis();
-			long numSecs = (partialEnd-partialStart)/1000;
-			log.info(partialCount +" pairs copied in " + numSecs + " secondss => (" + partialCount/numSecs + " paris/s)"); 
+			double numSecs = (partialEnd-partialStart)/1000.0;
+			double avg = (numSecs == 0) ? Double.NaN : partialCount / numSecs;
+			log.info(partialCount +" pairs copied in " + numSecs + " secondss => (" + avg + " pairs/s)"); 
 			reader.close();
 			totalCount+=partialCount;
 		}
 		long totalEnd = System.currentTimeMillis();
-		long numSecs = ((totalEnd-totalStart))/1000;
-		log.info("TOTAL"+totalCount +" pairs copied in " + numSecs/60.0f + " minutes => (" + totalCount/numSecs + " pairs/sec)");
+		double numSecs = ((totalEnd-totalStart))/1000.0;
+		double avg = (numSecs == 0) ? Double.NaN : totalCount / numSecs;
+		log.info("TOTAL:"+totalCount +" pairs copied in " + (int)((numSecs)/60) + " min " + ((int)numSecs%60) + " sec  => (" + avg + " pairs/sec)");
 		writer.close();
 	}
+	private static final String HELP="<input_1> <input_2> ... <output>";
+	public static void main(String[] args) throws IOException{
+		if (args.length < 2){
+			System.err.println("At least one input and output");
+			System.err.println(HELP);
+			System.exit(-1);
+		}
+		Configuration conf = new Configuration();
+		FileSystem fs = FileSystem.get(conf);
+		List<Path> inputs = new ArrayList<Path>();
+		for (int i=0 ; i < args.length -1 ; i++){
+			Path p = new Path(args[i]);
+			FileStatus[] statuses = fs.globStatus(p);
+			for (FileStatus s : statuses){
+				Path sP = s.getPath();
+				System.out.println("Input:" + sP);
+				inputs.add(sP);
+			}
+		}
+		Path output = new Path(args[args.length-1]);
+		System.out.println("Output:" + output);
+		com.datasalt.utils.commons.io.SequenceFileCat.concat(fs,conf,inputs,output);
+	}
+	
+	
+	
 }
