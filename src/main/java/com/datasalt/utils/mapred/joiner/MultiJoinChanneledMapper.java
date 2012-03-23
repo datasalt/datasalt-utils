@@ -48,7 +48,7 @@ public class MultiJoinChanneledMapper<INPUT_KEY, INPUT_VALUE, OUTPUT_VALUE> exte
 	public static final String MULTIJOINER_CHANNELED_CHANNELS = "datasalt.multijoiner.channeled.channels";
 
 	private Map<String, Integer> idByFile = new HashMap<String, Integer>();
-
+	
 	/**
 	 * Don't forget to call super.setup() if you override this method.
 	 */
@@ -123,7 +123,13 @@ public class MultiJoinChanneledMapper<INPUT_KEY, INPUT_VALUE, OUTPUT_VALUE> exte
 	    throws IOException, InterruptedException {
 
 		String path = GetInputFileFromTaggedInputSplit.get(context.getInputSplit());
-		int classId = idByFile.get(path);
+		if (path == null){
+			throw new IOException("Null path for inputSplit:" + context.getInputSplit() + "\ncontext:" + context + "\nidByFile:" + idByFile);
+		}
+		Integer classId = idByFile.get(path);
+		if (classId == null){
+			throw new IOException("Class id null for inputSplit:" + context.getInputSplit() + "\ncontext:" + context + "\nidByFile:" + idByFile);
+		}
 		emitBytes(grouping, offset, length, secondarySort, datum, classId);
 	}
 }
