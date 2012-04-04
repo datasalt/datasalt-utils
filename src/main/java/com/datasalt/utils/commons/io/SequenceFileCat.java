@@ -210,7 +210,7 @@ public class SequenceFileCat {
 		
 		SequenceFileCat s = new SequenceFileCat(conf,fs);
 		s.setInputs(inputs);
-		s.setOutput(output);
+		s.setOutput(output);		
 		//TODO update this to enable different compressionCodec and types;
 		//s.setCodec(codec);
 		//s.setCompressionType(type);

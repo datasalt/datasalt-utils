@@ -143,7 +143,7 @@ public class BaseConfigurationFactory implements ConfigurationFactory{
 
 				// Compress MapReduce output
 				conf.set("mapred.output.compress","true");
-				conf.set("mapred.output.compression","org.apache.hadoop.io.compress.SnappyCodec");
+				conf.set("mapred.output.compression.codec","org.apache.hadoop.io.compress.SnappyCodec");
 				
 				found = true;
 				break;
