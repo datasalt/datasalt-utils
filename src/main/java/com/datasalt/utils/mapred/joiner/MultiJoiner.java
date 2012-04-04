@@ -239,6 +239,7 @@ public class MultiJoiner {
 		}
 		addInOrder(channel + "", MultiJoinChanneledMapper.MULTIJOINER_CHANNELED_CHANNELS, getJob().getConfiguration());
 		addInOrder(location.toString(), MultiJoinChanneledMapper.MULTIJOINER_CHANNELED_FILES, getJob().getConfiguration());
+		System.out.println("Adding file " + location + " with mapper " + mapper.getName());
 		MultipleInputs.addInputPath(getJob(), location, inputFormat, mapper);
 	}
 
