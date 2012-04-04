@@ -4,11 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.FileUtil;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.SequenceFile.CompressionType;
@@ -220,6 +218,21 @@ public class SequenceFileCat {
 		s.concat();
 	}
 	
+	public static void printInfo(Path input,Configuration conf) throws IOException{
+		FileSystem fs = FileSystem.get(conf);
+		SequenceFile.Reader reader = new SequenceFile.Reader(fs,input, conf);
+		CompressionCodec codec = reader.getCompressionCodec();
+		Metadata metadata = reader.getMetadata();
+		Class keyClass = reader.getKeyClass();
+		Class valueClass = reader.getValueClass();
+		System.out.println("Compression codec:" + codec.getClass());
+		System.out.println("Compressor type:" + codec.getCompressorType());
+		System.out.println("Decompressor type:" + codec.getDecompressorType());
+		System.out.println("key:"+ keyClass + " value:" + valueClass);
+		System.out.println("Metadata:"+metadata);
+		reader.close();
+	}
+
 	
 	
 }
