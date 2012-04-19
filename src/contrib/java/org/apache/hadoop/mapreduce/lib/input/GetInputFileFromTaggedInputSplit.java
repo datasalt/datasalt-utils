@@ -10,12 +10,11 @@ public class GetInputFileFromTaggedInputSplit {
 		if(iS instanceof TaggedInputSplit) {
 			TaggedInputSplit t = (TaggedInputSplit) iS;
 			FileSplit fS = (FileSplit) t.getInputSplit();
-			System.out.println("File from InputSplit: " + fS.getPath());
+//System.out.println("File from InputSplit: " + fS.getPath());
 			return fS.getPath().toString();
 		} else if(iS instanceof FileSplit) {
 			FileSplit fS = (FileSplit) iS;
-			System.out.println("File from InputSplit: " + fS.getPath());
-			return fS.getPath().toString();
+/			return fS.getPath().toString();
 		} else {
 			throw new IOException("Unable to get file from unknown InputSplit : " + iS);
 		}
