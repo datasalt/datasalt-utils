@@ -128,7 +128,7 @@ public class MultiJoinChanneledMapper<INPUT_KEY, INPUT_VALUE, OUTPUT_VALUE> exte
 		}
 		Integer classId = idByFile.get(path);
 		if (classId == null){
-			throw new IOException("Class id null for inputSplit:" + context.getInputSplit() + "\ncontext:" + context + "\nidByFile:" + idByFile);
+			throw new IOException("Class id null for path: " + path + "\nidByFile:" + idByFile);
 		}
 		emitBytes(grouping, offset, length, secondarySort, datum, classId);
 	}
