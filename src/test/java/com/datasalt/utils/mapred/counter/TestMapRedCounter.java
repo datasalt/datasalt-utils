@@ -139,8 +139,8 @@ public class TestMapRedCounter extends BaseTest {
 		
 		job.waitForCompletion(true);
 		
-		HashMap<String, Long> itemCount = itemCountAsMap(getFs(), OUTPUT_COUNT + "/" + MapRedCounter.Outputs.COUNTFILE + "-r-00000");		
-		HashMap<String, LongPairWritable> itemGroupCount = itemGroupCountAsMap (getFs(), OUTPUT_COUNT + "/" + MapRedCounter.Outputs.COUNTDISTINCTFILE + "-r-00000");
+		HashMap<String, Long> itemCount = itemCountAsMap(getFs(), OUTPUT_COUNT + "/" + MapRedCounter.Outputs.COUNTFILE + "/part-r-00000");		
+		HashMap<String, LongPairWritable> itemGroupCount = itemGroupCountAsMap (getFs(), OUTPUT_COUNT + "/" + MapRedCounter.Outputs.COUNTDISTINCTFILE + "/part-r-00000");
 	
 		assertCount(2, "2:c6d3:c", itemCount);
 		assertCount(2, "2:c6d3:b", itemCount);
@@ -169,8 +169,8 @@ public class TestMapRedCounter extends BaseTest {
 		
 		job.waitForCompletion(true);
 		
-		HashMap<String, Long> itemCount = itemCountAsMap(getFs(), OUTPUT_COUNT + "/" + MapRedCounter.Outputs.COUNTFILE + "-r-00000");		
-		HashMap<String, LongPairWritable> itemGroupCount = itemGroupCountAsMap (getFs(), OUTPUT_COUNT + "/" + MapRedCounter.Outputs.COUNTDISTINCTFILE + "-r-00000");
+		HashMap<String, Long> itemCount = itemCountAsMap(getFs(), OUTPUT_COUNT + "/" + MapRedCounter.Outputs.COUNTFILE + "/part-r-00000");		
+		HashMap<String, LongPairWritable> itemGroupCount = itemGroupCountAsMap (getFs(), OUTPUT_COUNT + "/" + MapRedCounter.Outputs.COUNTDISTINCTFILE + "/part-r-00000");
 		
 		
 		assertCount(1, "0:single:isingle", itemCount);		

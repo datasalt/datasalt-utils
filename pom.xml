@@ -114,13 +114,12 @@
       <version>2.9.1</version>
     </dependency>          
     
-      <!-- Cloudera's CDH3 Hadoop -->
     <dependency>
-      <groupId>org.apache.hadoop</groupId>
-      <artifactId>hadoop-core</artifactId>
-      <version>0.20.2-cdh3u0</version>
-    </dependency>  
-      
+		<groupId>com.datasalt.pangool</groupId>
+		<artifactId>pangool-core</artifactId>
+		<version>0.42.0</version>
+	</dependency>
+                  
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-io</artifactId>

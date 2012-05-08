@@ -115,7 +115,7 @@ public class TestCrossProductMapRed  extends BaseTest {
 		Text txt2 = new Text();
 		if(twoSteps) {
 
-			reader = new SequenceFile.Reader(fS, new Path(OUTPUT, "EXTRA-r-00000"), conf);
+			reader = new SequenceFile.Reader(fS, new Path(OUTPUT, "EXTRA" + "/" + "part-r-00000"), conf);
 	
 			/*
 			 * Assert intermediate "big groups" output
