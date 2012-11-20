@@ -34,6 +34,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.datasalt.pangool.tuplemr.mapred.lib.output.PangoolMultipleOutputs;
 import com.datasalt.utils.commons.BaseConfigurationFactory;
 import com.datasalt.utils.commons.HadoopTestUtils;
 import com.datasalt.utils.commons.HadoopUtils;
@@ -53,7 +54,9 @@ public class TestMapRedCounter extends BaseTest {
 	private FileSystem getFs() throws IOException {
 		Configuration conf = getConf();
 		FileSystem fs = FileSystem.get(conf);
+		PangoolMultipleOutputs mouts;
 		return fs;
+		
 	}
 	
 	@Before

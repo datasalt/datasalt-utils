@@ -230,7 +230,7 @@
             <configuration>
               <sources>
                 <source>src/contrib/java</source>
-              <!--  <source>target/test/generated-thrift/java/gen-javabean</source> -->
+               <!--source>target/test/generated-thrift/java/gen-javabean</source--> 
               </sources>
             </configuration>
           </execution>
@@ -241,52 +241,6 @@
  
  
  <profiles>
-    <profile>
-      <id>profile-buildthrift</id>
-      <activation>
-        <file>
-          <exists>/usr/local/bin/thrift</exists>
-        </file>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>default-cli</id>
-<!--                <phase>generate-sources</phase> -->
-                <configuration>
-                  <tasks>
-                    <mkdir dir="target/test/generated-thrift/java/" />
-                    <exec executable="/usr/local/bin/thrift">
-                      <arg value="--gen" />
-                      <arg value="java:beans"/>
-                      <arg value="-o"/>
-                      <arg value="target/test/generated-thrift/java/"/>
-                      <arg value="src/test/resources/datasalt-test.thrift"/>
-                    </exec>
-                    <!--  
-                    <delete>
-                      <fileset dir="src/main/java/com/joelpm/generated" includes="**/*"/>
-                    </delete>
-                    -->
-                    <!-- 
-                    <copy todir="src/main/java/com/joelpm/generated">
-                      <fileset dir="target/generated-sources/gen-javabean/com/joelpm/generated"/>
-                    </copy>-->
-                    
-                  </tasks>
-                </configuration>
-                <goals>
-                  <goal>run</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
 	<profile>
     <id>release-sign-artifacts</id>
     <activation>

@@ -16,23 +16,21 @@
 
 package com.datasalt.utils.io;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import com.datasalt.utils.thrift.test.A;
-
 import org.apache.thrift.TException;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.datasalt.utils.commons.test.BaseTest;
-import com.datasalt.utils.io.DatumPairBase;
-import com.datasalt.utils.io.Serialization;
-
-import static org.junit.Assert.*;
+import com.datasalt.utils.thrift.test.A;
 
 public class TestDatumPair extends BaseTest {
 
