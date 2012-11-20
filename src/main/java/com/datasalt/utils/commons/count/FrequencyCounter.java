@@ -62,7 +62,11 @@ public class FrequencyCounter<T extends Comparable<T>> extends HashMap<T, Intege
       public int compare(Object o1, Object o2) {
 				Map.Entry<T, Integer> arg0 = (Map.Entry<T, Integer>) o1;
 				Map.Entry<T, Integer> arg1 = (Map.Entry<T, Integer>) o2;
-	      return arg1.getValue().compareTo(arg0.getValue());
+	      int cmp = arg1.getValue().compareTo(arg0.getValue());
+	      if(cmp == 0) {
+	      	return arg1.getKey().compareTo(arg0.getKey());
+	      }
+	      return cmp;
       }
 		});
 		for(int i = 0; i < n && i < entries.length; i++) {

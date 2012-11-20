@@ -230,7 +230,7 @@
             <configuration>
               <sources>
                 <source>src/contrib/java</source>
-                <source>target/test/generated-thrift/java/gen-javabean</source>
+              <!--  <source>target/test/generated-thrift/java/gen-javabean</source> -->
               </sources>
             </configuration>
           </execution>
@@ -254,8 +254,8 @@
             <artifactId>maven-antrun-plugin</artifactId>
             <executions>
               <execution>
-                <id>generate-thrift</id>
-                <phase>generate-sources</phase>
+                <id>default-cli</id>
+<!--                <phase>generate-sources</phase> -->
                 <configuration>
                   <tasks>
                     <mkdir dir="target/test/generated-thrift/java/" />
